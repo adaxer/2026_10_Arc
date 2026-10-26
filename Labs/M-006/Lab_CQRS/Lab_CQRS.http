@@ -1,0 +1,50 @@
+@host = http://localhost:5143
+@accountId = 00000000-0000-0000-0000-000000000000
+
+# Konto öffnen. Anschließend die zurückgegebene GUID oben in accountId eintragen.
+POST {{host}}/BankAccount/open
+Content-Type: application/json
+Accept: application/json
+
+{
+  "initialBalance": 1000.00
+}
+
+###
+
+# Geld einzahlen
+POST {{host}}/BankAccount/{{accountId}}/deposit
+Content-Type: application/json
+
+{
+  "amount": 250.00
+}
+
+###
+
+# Geld abheben
+POST {{host}}/BankAccount/{{accountId}}/withdraw
+Content-Type: application/json
+
+{
+  "amount": 100.00
+}
+
+###
+
+# Kontostand abfragen
+GET {{host}}/BankAccount/{{accountId}}/balance
+Accept: application/json
+
+###
+
+# Kontohistorie abfragen
+GET {{host}}/BankAccount/{{accountId}}/history
+Accept: application/json
+
+###
+
+# Konto schließen
+POST {{host}}/BankAccount/{{accountId}}/close
+
+###
