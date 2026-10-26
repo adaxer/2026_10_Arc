@@ -1,0 +1,51 @@
+@host = http://localhost:5143
+@accountId = abb77a24-1ba5-46e3-9516-71ab1225f11a
+
+# POST /BankAccount/open
+# Anschließend die zurückgegebene GUID oben in accountId eintragen.
+POST {{host}}/BankAccount/open
+Content-Type: application/json
+Accept: application/json
+
+{
+  "initialBalance": 1000.00
+}git add
+
+###
+
+# POST /BankAccount/{accountId}/deposit
+POST {{host}}/BankAccount/{{accountId}}/deposit
+Content-Type: application/json
+
+{
+  "amount": 250.00
+}
+
+###
+
+# POST /BankAccount/{accountId}/withdraw
+POST {{host}}/BankAccount/{{accountId}}/withdraw
+Content-Type: application/json
+
+{
+  "amount": 100.00
+}
+
+###
+
+# GET /BankAccount/{accountId}/balance
+GET {{host}}/BankAccount/{{accountId}}/balance
+Accept: application/json
+
+###
+
+# GET /BankAccount/{accountId}/history
+GET {{host}}/BankAccount/{{accountId}}/history
+Accept: application/json
+
+###
+
+# POST /BankAccount/{accountId}/close
+POST {{host}}/BankAccount/{{accountId}}/close
+
+###
