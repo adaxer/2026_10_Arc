@@ -1,0 +1,5 @@
+DoFactory
+https://dofactory.com/
+
+Refactoring Guru
+https://refactoring.guru/design-patterns
