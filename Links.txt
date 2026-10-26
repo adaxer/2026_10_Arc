@@ -3,3 +3,17 @@ https://dofactory.com/
 
 Refactoring Guru
 https://refactoring.guru/design-patterns
+
+Martin Fowler (Patterns)
+https://martinfowler.com/
+
+MediatR-Alternative
+https://github.com/martinothamar/Mediator
+
+
+gRPC und C# Corner
+https://www.c-sharpcorner.com/article/getting-started-with-grpc-in-net-8-using-c-sharp-12
+
+Youtubes
+@MilanJovanovicTech
+@nickchapsas
