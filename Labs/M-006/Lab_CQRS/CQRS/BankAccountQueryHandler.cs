@@ -13,19 +13,18 @@ public sealed class BankAccountQueryHandler :
         _store = store;
     }
 
-    public Task<decimal> Handle(
-        GetBalanceQuery request,
-        CancellationToken cancellationToken)
+    public Task<decimal> Handle(GetBalanceQuery request, CancellationToken cancellationToken)
     {
-        var account = GetAccount(request.AccountId);
+        var account = _store.GetAccountView(request.AccountId)
+            ?? throw new KeyNotFoundException("Konto nicht gefunden.");
         return Task.FromResult(account.GetBalance());
     }
 
-    public Task<AccountEvent[]> Handle(
+        public Task<AccountEvent[]> Handle(
         GetHistoryQuery request,
         CancellationToken cancellationToken)
     {
-        var history = GetAccount(request.AccountId)
+        var history = _store.GetAccountView(request.AccountId)!
             .Select(ToAccountEvent)
             .ToArray();
 
@@ -36,7 +35,7 @@ public sealed class BankAccountQueryHandler :
         => _store.GetAccountView(accountId)
             ?? throw new KeyNotFoundException("Konto nicht gefunden.");
 
-    private static AccountEvent ToAccountEvent(Event @event)
+     private static AccountEvent ToAccountEvent(Event @event)
         => @event switch
         {
             AccountOpenedEvent opened => new AccountEvent(
@@ -60,4 +59,4 @@ public sealed class BankAccountQueryHandler :
                 @event,
                 "Unbekannter Event-Typ.")
         };
-}
+}   
