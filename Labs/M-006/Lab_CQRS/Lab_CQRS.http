@@ -1,5 +1,5 @@
 @host = http://localhost:5143
-@accountId = 00000000-0000-0000-0000-000000000000
+@accountId = eddf6d82-1154-4448-9bfc-b7e2e91a60fb
 
 # Konto öffnen. Anschließend die zurückgegebene GUID oben in accountId eintragen.
 POST {{host}}/BankAccount/open

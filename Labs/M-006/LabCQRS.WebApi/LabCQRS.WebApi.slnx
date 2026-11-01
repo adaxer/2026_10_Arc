@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../../M-005/LabEventSourcing/LabEventSourcing.csproj" />
+  <Project Path="LabCQRS.WebApi.csproj" />
+</Solution>
